@@ -1,0 +1,7 @@
+Bootstrap: localimage
+From: py38.sif
+
+%post
+
+    apt update
+    apt install -y gdb python3-dbg

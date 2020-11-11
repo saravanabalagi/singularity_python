@@ -1,0 +1,2 @@
+# Change instance://python to instance://your_instance
+singularity exec instance://python python "$@"

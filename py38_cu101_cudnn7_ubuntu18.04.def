@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
+
+%post
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt update && apt install -y \
+  git \
+  curl \
+  python3.8 \
+  python3.8-distutils \
+  python3-virtualenv
+
+ln -sf /usr/bin/python3.8 /usr/bin/python3 && \
+  ln -sf /usr/bin/python3 /usr/bin/python && \
+  python --version
+
+# poetry should be installed and configured locally to create in-project venvs
+# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+# poetry config virtualenvs.in-project true
+
+%labels
+
+Author Saravanabalagi Ramachandran
+Email saravanabalagi@hotmail.com
+Repo https://github.com/saravanabalagi/singularity_python
+Version v1.0

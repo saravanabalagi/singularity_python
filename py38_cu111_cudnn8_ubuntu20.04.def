@@ -3,7 +3,11 @@ From: nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04
 
 %post
 
-apt update && apt install -y curl \
+export DEBIAN_FRONTEND=noninteractive
+
+apt update && apt install -y \
+  git \
+  curl \
   python3.8 \
   python3.8-distutils \
   python3-virtualenv
@@ -18,7 +22,7 @@ ln -sf /usr/bin/python3.8 /usr/bin/python3 && \
 
 %labels
 
-  Author Saravanabalagi Ramachandran
-  Email saravanabalagi@hotmail.com
-  Repo https://github.com/saravanabalagi/singularity_python
-  Version v1.0
+Author Saravanabalagi Ramachandran
+Email saravanabalagi@hotmail.com
+Repo https://github.com/saravanabalagi/singularity_python
+Version v1.0

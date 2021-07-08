@@ -12,6 +12,7 @@ apt update && apt install -y \
   bc \
   zip \
   unzip \
+  unrar \
   curl \
   wget \
   git \

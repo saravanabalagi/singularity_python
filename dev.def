@@ -9,6 +9,8 @@ apt update && apt install -y \
   build-essential \
   ffmpeg \
   parallel \
+  pv \
+  jq \
   bc \
   zip \
   unzip \

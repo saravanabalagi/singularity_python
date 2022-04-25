@@ -1,4 +1,0 @@
-# Replace instance://python with instance://your_instance
-# Fake python binary
-# Allows access to python inside the singularity instance
-singularity exec instance://python python "$@"

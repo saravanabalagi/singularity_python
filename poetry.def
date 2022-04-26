@@ -1,0 +1,10 @@
+Bootstrap: localimage
+From: py38.sif
+
+%post
+    export POETRY_HOME=/opt/poetry
+    mkdir -p $POETRY_HOME
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python
+    chmod a+rX $POETRY_HOME/bin/poetry
+    ln -s $POETRY_HOME/bin/poetry /usr/local/bin/poetry
+    poetry --version

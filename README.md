@@ -6,14 +6,15 @@ Provides useful base containers for [Dev](https://github.com/saravanabalagi/sing
 
 ## Poetry Installation
 
-[Poetry](https://python-poetry.org/) should be installed and configured to create in-project venvs. 
+[Poetry](https://python-poetry.org/) is a very useful dependency manager for Python, works similar to npm. 
 
 1. Add poetry by building on top of `py38.sif` using [poetry.def](poetry.def).
-1. Make sure to configure `in-project` virtualenvs, this will save a file on the host at `~/.config/pypoetry/config.toml`
+1. If you need each project to have it's own dependencies neatly inside `.venv` directory, make sure to configure `in-project` virtualenvs.
 
     ```sh
     poetry config virtualenvs.in-project true
     ```
+    Since this will save a file on the host at `~/.config/pypoetry/config.toml`, it is sufficient that this is configured once per host machine.
 
 ## Tips
 
@@ -22,7 +23,20 @@ Provides useful base containers for [Dev](https://github.com/saravanabalagi/sing
 
 Although you could try other workarounds such as installing inside the container, IMHO installing `tmux` in the host is the best way so far, so just ask the admins to do it.
 
-### 2. Building a Python Project using Singularity Containers
+### 2. Executing on specific GPUs
+
+Before running your python script, do
+
+```
+export CUDA_VISIBLE_DEVICES=7          # to use GPU 7 (8th GPU)
+export CUDA_VISIBLE_DEVICES=0,1,2,3    # to use GPUs 0, 1, 2 and 3
+```
+
+Make sure your library respects this, ATTOW both Pytorch and Tensorflow respects this env var. If unset (which is the default), all GPUs will be used.
+
+If you would want to automatically choose `n` GPUs based on constraints such as current GPU memory used, use [mask-gpu](https://github.com/saravanabalagi/mask-gpu).
+
+### 3. Building a Python Project using Singularity Containers
 
 If you are simply using containers to run a long running process, say in a powerful shared machine **without sudo access**, then with singularity you get all the goodies such as reproducibility, isolation, integrity, etc. You only build the container once, and then run it whenever and whereever you need it to.
 
